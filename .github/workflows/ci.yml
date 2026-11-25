@@ -14,3 +14,16 @@ jobs:
 
       - name: Build the Docker image
         run: docker build -t uptime-monitor .
+
+      - name: Smoke test (run the monitor once)
+        run: |
+          mkdir output
+          docker run --rm \
+            -v "${{ github.workspace }}/sites.json:/app/sites.json:ro" \
+            -v "${{ github.workspace }}/output:/app/output" \
+            uptime-monitor
+
+      - name: Check that the history file was written
+        run: |
+          cat output/history.csv
+          test "$(wc -l < output/history.csv)" -ge 4
