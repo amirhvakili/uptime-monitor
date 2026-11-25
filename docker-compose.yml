@@ -1,0 +1,8 @@
+services:
+  monitor:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./sites.json:/app/sites.json:ro
+      - ./output:/app/output

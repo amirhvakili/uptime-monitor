@@ -1,0 +1,7 @@
+.env
+output/
+.scala-build/
+.bsp/
+.idea/
+.vscode/
+run.bat

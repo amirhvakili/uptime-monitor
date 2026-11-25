@@ -1,0 +1,5 @@
+[
+  {"name": "GitHub", "url": "https://github.com"},
+  {"name": "Open-Meteo API", "url": "https://api.open-meteo.com/v1/forecast?latitude=60.17&longitude=24.94&current=temperature_2m"},
+  {"name": "ntfy", "url": "https://ntfy.sh"}
+]
