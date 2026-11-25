@@ -1,5 +1,7 @@
 # Uptime Monitor
 
+![CI](https://github.com/amirhvakili/uptime-monitor/actions/workflows/ci.yml/badge.svg)
+
 A small Scala automation project that checks a list of websites every hour, keeps a history of the results, and sends a push notification to my phone only when a site goes down or comes back up.
 
 ## What it does
@@ -52,6 +54,18 @@ I run it hourly with Windows Task Scheduler, using `docker compose run --rm -T m
 
 - It can only check while the machine it runs on is on.
 - If ntfy.sh itself is down, the alert can't be delivered. The check is still saved in the history.
+
+
+## CI/CD
+
+Every push runs a GitHub Actions workflow:
+
+1. Builds the Docker image, which also compiles the Scala code
+2. Runs the monitor once as a smoke test and checks that it wrote its history file
+3. On `main`, publishes the image to GitHub Container Registry, tagged `latest` and with the commit ID
+
+The publish step only runs after the checks pass.
+
 
 ## Tech used
 
